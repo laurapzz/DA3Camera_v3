@@ -1,0 +1,189 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CameraDepthLane v3"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bike-lane obstacle detection"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginBottom="30dp"/>
+
+        <Button
+            android:id="@+id/btnCamera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Take Photo"/>
+
+        <Button
+            android:id="@+id/btnGallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose from Gallery"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Pipeline status -->
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/textStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Loading models…"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"/>
+
+        <!-- Final detection image -->
+
+        <ImageView
+            android:id="@+id/imagePreview"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="Detection result"/>
+
+        <TextView
+            android:id="@+id/textResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <!-- Execution time per step -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Execution time"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textTiming"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No image processed yet"
+                android:fontFamily="monospace"
+                android:textSize="12sp"
+                android:textIsSelectable="true"/>
+        </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="App startup"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textStartupTiming"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading…"
+                android:fontFamily="monospace"
+                android:textSize="12sp"
+                android:textIsSelectable="true"/>
+        </HorizontalScrollView>
+
+        <!-- Intrinsics: only needed for gallery images or cameras without calibration -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Camera intrinsics (gallery images)"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Photos taken in the app use the camera's own calibration. Gallery images use these values (remembered between sessions)."
+            android:textSize="12sp"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnImportIntrinsics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Import Intrinsics from .txt"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/inputFx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="fx (focal length X)"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal|numberSigned"/>
+
+        <EditText
+            android:id="@+id/inputFy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="fy (focal length Y)"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal|numberSigned"/>
+
+        <EditText
+            android:id="@+id/inputCx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="cx (principal point X)"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal|numberSigned"/>
+
+        <EditText
+            android:id="@+id/inputCy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="cy (principal point Y)"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal|numberSigned"
+            android:layout_marginBottom="24dp"/>
+
+    </LinearLayout>
+</ScrollView>
